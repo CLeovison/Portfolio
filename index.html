@@ -1,248 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Clark Leovison C. Rey" />
-    <meta
-      name="description"
-      content="Clark Leovison Rey, Leovison's Portfolio Website, Leovison Portfolio Website"
-    />
-    <title>Leovison's Portfolio</title>
-    <link rel="stylesheet" href="/src/main.css" />
-    <link rel="icon" type="x-icon" href="/assets/Icon.jpg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
-      integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css"
-      integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Clark Leovison C. Rey" />
+  <meta name="description" content="Clark Leovison Rey, Leovison's Portfolio Website" />
+  <title>Leovison's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/assets/Icon.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/src/main.css" />
+</head>
+<body>
+  <!-- Floating trial effect -->
+  <div class="trial"></div>
 
-  <!--Start of Navigation Bar-->
+  <!-- Navigation -->
   <header>
     <nav class="navbar">
-      <div class="nav-title">
-        <h2><a href="#Hero">\\ Leovison</a></h2>
-      </div>
-
+      <div class="nav-title"><a href="#Home">\\ Leovison</a></div>
       <ul class="navlist">
-        <li class="nav-items">
-          <a href="#Home" class="nav-link">
-            <i class="fa-solid fa-house-chimney"></i>
-            <span class="nav-name">Home</span>
-          </a>
-        </li>
-
-        <li class="nav-items">
-          <a href="#About" class="nav-link">
-            <i class="fa-solid fa-user-tie"></i>
-            <span class="nav-name">About</span>
-          </a>
-        </li>
-
-        <li class="nav-items">
-          <a href="#Project" class="nav-link">
-            <i class="fa-solid fa-briefcase"></i>
-            <span class="nav-name">Projects</span></a
-          >
-        </li>
-
-        <li class="nav-items">
-          <a href="#Contact" class="nav-link">
-            <i class="fa-solid fa-id-card"></i>
-            <span class="nav-name">Contact</span></a
-          >
-        </li>
+        <li class="nav-items"><a href="#Home" class="nav-link"><i class="fa-solid fa-house-chimney"></i>Home</a></li>
+        <li class="nav-items"><a href="#About" class="nav-link"><i class="fa-solid fa-user-tie"></i>About</a></li>
+        <li class="nav-items"><a href="#Projects" class="nav-link"><i class="fa-solid fa-briefcase"></i>Projects</a></li>
+        <li class="nav-items"><a href="#Contact" class="nav-link"><i class="fa-solid fa-id-card"></i>Contact</a></li>
       </ul>
-
-      <div class="light-dark">
-        <i class="fa-solid fa-moon fa-xl theme"></i>
-      </div>
+      <div class="light-dark"><i class="fa-solid fa-moon theme"></i></div>
     </nav>
   </header>
-  <!--End of Navigation Bar-->
 
-  <body>
-    <div class="trial"></div>
-    <div class="main-style"></div>
-    <main>
-      <div style="width: 100%; height: 70px"></div>
-      <!--Start of Hero Section-->
-      <section id="Home" class="Hero height">
-        <div class="contents">
-          <div class="information">
-            <h1 class="header">Clark Leovison Rey</h1>
-            <p class="details">
-              I'm a Web-Developer and (Occational Web Designer) <br />
-              who build an exceptional digital experience.
-            </p>
-            <div class="button">
-              <a href="#About" class="btn-me">More About Me</a>
-            </div>
-          </div>
-          <div class="img-details">
-            <img src="/assets/img/Polo.png" alt="" />
-          </div>
+  <main>
+    <!-- Hero Section -->
+    <section id="Home" class="hero">
+      <div class="hero-text">
+        <h1>Clark Leovison Rey</h1>
+        <p>I'm a Web Developer and occasional Web Designer <br>who builds exceptional digital experiences.</p>
+        <a href="#About" class="btn-me">More About Me</a>
+      </div>
+      <div class="hero-img">
+        <img src="/assets/img/Polo.png" alt="Leovison">
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="About" class="about">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <div class="about-text">
+          <p>Hello! I'm Clark Leovison Rey but my friends call me Leo. My interest in Web Development started in 2011 when I was experimenting with Blogspot.</p>
+          <p>Nowadays, I focus on building products that hone my skills. During my free time, I also explore Music Production & Web Design tutorials.</p>
+          <p>Here are some technologies I've been using recently:</p>
+          <ul class="skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>WordPress</li>
+            <li>Photoshop</li>
+          </ul>
         </div>
-        <br /><br /><br /><br />
-      </section>
-      <!--End of Hero Section-->
+        <div class="hero-img">
+          <img src="/assets/img/Polo.png" alt="Leovison">
+        </div>
+      </div>
 
-      <!-- Start of About Section -->
-      <section id="About" class="Abouts height">
-        <div class="main-header">About Me</div>
-
-        <div class="container">
-          <div class="information">
-            <p class="descriptive">
-              Hello! I'm Clark Leovison Rey but my friends call me Leo. My
-              interest on Web Development started way back 2011
-              <span class="break"
-                ><br />when i was trying to build a web page in blogspot. Fast
-                forward to this day brand i get a chance to build a web page
-                <br />that is interactive and responsive</span
-              >
-            </p>
-
-            <br />
-            <p class="descriptive">
-              These days my primary focus was to build a products that could
-              hone my skills as a developer. During my free time,
-              <span class="break"
-                ><br />i also watch some tutorials regarding Music Producing
-                &amp; Web Designing</span
-              ><br />
-
-              <span class="skills-descrip"
-                ><br />Here are some of the technologies that i've been using
-                recently:</span
-              >
-            </p>
-            <ul class="skills">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript</li>
-              <li>Wordpress</li>
-              <li>Photoshop</li>
+      <!-- Experience Tabs -->
+      <div class="experience-tabs">
+        <div class="companies">
+          <button class="active">Konnectd</button>
+          <button>E-Team Workforce</button>
+          <button>University of Perpetual Help</button>
+        </div>
+        <div class="job-descriptions">
+          <div class="job active">
+            <h3>Junior Web Developer (Mar 2021 - Sept 2021)</h3>
+            <ul>
+              <li>Communicated with clients about design and technical details.</li>
+              <li>Wrote code using HTML, CSS, and JavaScript.</li>
+              <li>Reviewed UI/UX designs for layout compatibility.</li>
+              <li>Monitored website traffic to improve usability.</li>
+              <li>Tested company website applications.</li>
             </ul>
           </div>
-          <div class="img-details">
-            <img src="/assets/img/Polo.png" alt="" />
+          <div class="job">
+            <h3>HTML-Application Developer (Sept 2021 - June 2022)</h3>
+            <ul>
+              <li>Performed unit & integration testing.</li>
+              <li>Troubleshot and debugged applications.</li>
+              <li>Created prototypes based on client specifications.</li>
+              <li>Tracked application lifecycle to ensure timely updates.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Web Administrator (Mar 2023 - Present)</h3>
+            <ul>
+              <li>Maintained and monitored tools on the web server.</li>
+              <li>Developed web-based e-commerce applications.</li>
+              <li>Implemented website revision procedures.</li>
+              <li>Suggested website improvements and new features.</li>
+            </ul>
           </div>
         </div>
+      </div>
+    </section>
 
-        <section class="Experience">
-          <div class="main-header">Where I've Work</div>
-
-          <div class="exp-container">
-            <div class="prev-exp">
-              <div class="company-name" id="JWB">
-                <span>Konnectd</span>
-              </div>
-
-              <div class="company-name">
-                <span>E&nbsp;-&nbsp;Team&nbsp;Workforce</span>
-              </div>
-
-              <div class="company-name">
-                <span>University&nbsp;of&nbsp;Perpetual Help - Jonelta</span>
-              </div>
-            </div>
-
-            <div class="job-task">
-              <div class="descrip active" id="JWB">
-                <div class="title-start">
-                  <span>Junior Web Developer</span>
-                  <span>March 2021 - Sept.2021</span>
-                </div>
-                <ul>
-                  <li>
-                    Communicated with clients about design choices and technical
-                    details throughout the development process.
-                  </li>
-                  <li>
-                    Wrote codes using various programming languages such as HTML
-                    ,CSS and Javascript.
-                  </li>
-                  <li>
-                    Reviewed designs created by UI/UX designer to ensure that
-                    they are compatible with the website’s layout
-                  </li>
-                  <li>
-                    Monitored website traffic to identify opportunities for
-                    improving usability and increasing conversions.
-                  </li>
-                  <li>Tested apps for the company's website.</li>
-                </ul>
-              </div>
-
-              <div class="descrip" id="HAD">
-                <div class="title-start">
-                  <span>HTML&ndash;Application&nbsp;Developer</span>
-                  <span>Sept.2021&ndash;June 2022</span>
-                </div>
-                <ul>
-                  <li>Perform unit and integration testing before launch</li>
-                  <li>Troubleshooting and debugging the application
-                  </li>
-                  <li>Understanding the requirements of the client to create specifications for applications</li>
-                  <li>Creating prototypes for the application according to the specifications</li>
-                  <li>Stay on track of the application lifecycle to ensure necessary updates are completed on time</li>
-                </ul>
-              </div>
-
-              <div class="descrip">
-                <div class="title-start" id="WA">
-                  <span>Web&nbsp;Administrator </span>
-                  <span>March 2023&ndash;Present</span>
-                </div>
-                <ul>
-                  <li>Maintain/Monitor tools on Web Server</li>
-                  <li>Developing a web-based custom application for e-commerce on line marketing and operations</li>
-                  <li>Developing/Implement procedures for ongoing website revision</li>
-                  <li>Recommendation of website improvement</li>
-                  <li>Evaluating existing website and adding new features, reprogramming them or completing updates
-                  </li>
-                </ul>
-              </div>
+    <!-- Projects Section -->
+    <section id="Projects" class="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <!-- Example Project Card -->
+        <div class="project-card">
+          <img src="/assets/img/project1.png" alt="Project 1">
+          <div class="project-info">
+            <h3>Project 1</h3>
+            <p>A brief description of Project 1</p>
+            <div class="project-links">
+              <a href="#">View</a>
+              <a href="#">Code</a>
             </div>
           </div>
-        </section>
-      </section>
-      <!-- End of About Section -->
+        </div>
+      </div>
+    </section>
 
-      <!-- Start of Projects Section -->
-      <section class="Project" id="Projects">
-          
+    <!-- Contact Section -->
+    <section id="Contact" class="contact">
+      <h2>Contact Me</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
 
-
-      </section>
-
-      <section id="Contact" class="Contacts height"></section>
-    </main>
-
-    <script src="/src/script/main.js"></script>
-  </body>
+  <script src="/src/script/main.js"></script>
+</body>
 </html>

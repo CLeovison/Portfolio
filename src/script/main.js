@@ -1,120 +1,64 @@
-//Start of Smooth Scroll Navigation
-function smoothScroll() {
-  const navigation = document.querySelector(".navbar");
-  const navigationHeight = navigation.offsetHeight;
 
-  document.documentElement.style.setProperty(
-    "--scroll-padding",
-    navigationHeight + "px"
-  );
+const lightDark = document.querySelector('.light-dark');
+const themeIcon = document.querySelector('.light-dark i');
+const trialDiv = document.querySelector('.trial');
+
+let theme = localStorage.getItem('themes');
+
+function setLight() {
+  document.body.classList.add('active');
+  themeIcon.classList.remove('fa-moon');
+  themeIcon.classList.add('fa-sun');
+  trialDiv?.classList.add('active');
+  themeIcon.style.color = '#FDB813';
 }
-smoothScroll();
-//End of Smooth Scroll Navigation
 
-//Start of Light & Dark Mode Section
-function lightDark() {
-  const lightDark = document.querySelector(".light-dark");
-  let theme = document.querySelector(".light-dark > .theme");
-  let storage = localStorage.getItem("themes");
-  const trial = document.querySelector(".trial");
+function setDark() {
+  document.body.classList.remove('active');
+  themeIcon.classList.remove('fa-sun');
+  themeIcon.classList.add('fa-moon');
+  trialDiv?.classList.remove('active');
+  themeIcon.style.color = '#B8AEA3';
+}
 
-  function setLight() {
-    document.body.classList.add("active");
-    theme.classList.remove("fa-moon");
-    theme.classList.add("fa-sun");
-    trial.classList.add("active");
-    document.querySelector(".light-dark > .theme").style.color = "#FDB813";
+theme === 'light' ? setLight() : setDark();
+
+lightDark.addEventListener('click', () => {
+  if(themeIcon.classList.contains('fa-moon')) {
+    setLight();
+    localStorage.setItem('themes','light');
+  } else {
+    setDark();
+    localStorage.setItem('themes','dark');
   }
-  function setDark() {
-    theme.classList.remove("fa-sun");
-    theme.classList.add("fa-moon");
-    document.body.classList.remove("active");
-    trial.classList.remove("active");
-    document.querySelector(".light-dark > .theme").style.color = "#B8AEA3";
-  }
+});
 
-  storage === "light" ? setLight() : setDark();
 
-  lightDark.addEventListener("click", (e) => {
-    if (theme.classList.contains("fa-moon")) {
-      setLight();
-      localStorage.setItem("themes", "light");
-    } else {
-      setDark();
-      localStorage.setItem("themes", "dark");
-    }
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 70;
+    if(scrollY >= sectionTop) current = section.getAttribute('id');
   });
-}
-lightDark();
-//End of Light & Dark Mode Section
 
-//Start of Scroll Active Navigation Bar
-function scrollActive() {
-  let navLinkS = document.querySelectorAll(".nav-link");
-  let sections = document.querySelectorAll("section");
-
-  window.addEventListener("scroll", () => {
-    let current = " ";
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (scrollY >= sectionTop - sectionHeight / 5) {
-        current = section.getAttribute("id");
-      }
-    });
-    navLinkS.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").slice(1) === current) {
-        link.classList.add("active");
-      }
-    });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href').includes(current)) link.classList.add('active');
   });
-}
-scrollActive();
-//End of Scroll Active Navigation Bar
+});
 
-//Tabs
-function tabs() {
-  const companys = document.querySelectorAll(".company-name");
-  const description = document.querySelectorAll(".descrip");
+const companyButtons = document.querySelectorAll('.companies button');
+const jobs = document.querySelectorAll('.job');
 
-  companys.forEach((company) => {
-    company.addEventListener("click", () => {
-      const index = [...companys].indexOf(company);
-      companys.forEach((x) => {
-        x.classList.remove("active");
-      });
+companyButtons.forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    companyButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-      company.classList.add("active");
-
-      description.forEach((descrip) => {
-        descrip.classList.remove("active");
-      });
-      description[index].classList.add("active");
-    });
+    jobs.forEach(j => j.classList.remove('active'));
+    jobs[i].classList.add('active');
   });
-}
-tabs();
-
-
-
-//Documentation//
-
-//1. Light Dark Mode Section
-
-// The ClassList contains will be executed if the value that has been declared was there,
-// Meaning if the value is true then it will be executed, if false then it will not be executed
-
-//Target Javascript Functions
-//1. Scroll Active Navigation Bar - Done
-//2. Skeleton
-//3. Pre-Loader
-//4. Light & Dark Mode - Done
-//5. Smooth Scrolling - Done
-//6. Intersection Observer
-//7. View Transition Timeline
-//8. Tabs - Done
-
-//Reference
-// https://codepen.io/dbilanoski/pen/LabpzG - Active Navigation
-// https://codepen.io/kevinpowell/pen/eYjRVmw - Smooth Scrolling
+});
