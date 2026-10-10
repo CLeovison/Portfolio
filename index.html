@@ -7,132 +7,250 @@
   <meta name="description" content="Clark Leovison Rey, Leovison's Portfolio Website" />
   <title>Leovison's Portfolio</title>
   <link rel="icon" type="image/x-icon" href="/assets/Icon.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/src/main.css" />
 </head>
 <body>
-  <!-- Floating trial effect -->
-  <div class="trial"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
 
-  <!-- Navigation -->
-  <header>
-    <nav class="navbar">
-      <div class="nav-title"><a href="#Home">\\ Leovison</a></div>
-      <ul class="navlist">
-        <li class="nav-items"><a href="#Home" class="nav-link"><i class="fa-solid fa-house-chimney"></i>Home</a></li>
-        <li class="nav-items"><a href="#About" class="nav-link"><i class="fa-solid fa-user-tie"></i>About</a></li>
-        <li class="nav-items"><a href="#Projects" class="nav-link"><i class="fa-solid fa-briefcase"></i>Projects</a></li>
-        <li class="nav-items"><a href="#Contact" class="nav-link"><i class="fa-solid fa-id-card"></i>Contact</a></li>
-      </ul>
-      <div class="light-dark"><i class="fa-solid fa-moon theme"></i></div>
+  <header class="status-bar">
+    <div class="brand">// Leovison</div>
+    <nav class="nav-strip" aria-label="Primary">
+      <a href="#Home" class="nav-link active" data-target="Home">Home</a>
+      <a href="#About" class="nav-link" data-target="About">About</a>
+      <a href="#Projects" class="nav-link" data-target="Projects">Projects</a>
+      <a href="#Contact" class="nav-link" data-target="Contact">Contact</a>
     </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="Home" class="hero">
-      <div class="hero-text">
+  <main class="shell">
+    <aside class="side-hud">
+      <div class="hud-card">
+        <h2>keymap</h2>
+        <ul class="keymap-list">
+          <li><kbd>j</kbd> next section</li>
+          <li><kbd>k</kbd> prev section</li>
+          <li><kbd>h</kbd> prev tab</li>
+          <li><kbd>l</kbd> next tab</li>
+          <li><kbd>:</kbd> command mode</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="terminal-window" aria-label="Portfolio terminal">
+      <div class="terminal-top">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+        <p class="terminal-title">nvim://portfolio/quest_mode</p>
+      </div>
+
+      <section id="Home" class="panel hero-panel active-panel" data-panel="home">
+        <p class="line">$ whoami</p>
         <h1>Clark Leovison Rey</h1>
-        <p>I'm a Web Developer and occasional Web Designer <br>who builds exceptional digital experiences.</p>
-        <a href="#About" class="btn-me">More About Me</a>
-      </div>
-      <div class="hero-img">
-        <img src="/assets/img/Polo.png" alt="Leovison">
-      </div>
-    </section>
+        <p class="hero-copy">Backend-focused software developer with 3+ years delivering ASP.NET Core services, robust APIs, and production-grade web platforms.</p>
+        <p id="type-line" class="type-line"></p>
+        <button class="quest-btn" id="start-quest" type="button">Start Quest</button>
+      </section>
 
-    <!-- About Section -->
-    <section id="About" class="about">
-      <h2>About Me</h2>
-      <div class="about-container">
-        <div class="about-text">
-          <p>Hello! I'm Clark Leovison Rey but my friends call me Leo. My interest in Web Development started in 2011 when I was experimenting with Blogspot.</p>
-          <p>Nowadays, I focus on building products that hone my skills. During my free time, I also explore Music Production & Web Design tutorials.</p>
-          <p>Here are some technologies I've been using recently:</p>
-          <ul class="skills">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>WordPress</li>
-            <li>Photoshop</li>
-          </ul>
-        </div>
-        <div class="hero-img">
-          <img src="/assets/img/Polo.png" alt="Leovison">
-        </div>
-      </div>
+      <section id="About" class="panel" data-panel="about">
+        <p class="line">$ cat about.md</p>
+        <h2>About Me</h2>
+        <p>Backend software developer with 3+ years of experience delivering reliable, scalable systems for production environments.</p>
+        <p>Core expertise includes C#, ASP.NET Core, Entity Framework Core, and SQL, with consistent focus on clean architecture, API quality, and maintainable implementation.</p>
+        <p>Proven track record of translating business requirements into stable, testable solutions that support long-term product and team growth.</p>
 
-      <!-- Experience Tabs -->
-      <div class="experience-tabs">
-        <div class="companies">
-          <button class="active">Konnectd</button>
-          <button>E-Team Workforce</button>
-          <button>University of Perpetual Help</button>
-        </div>
-        <div class="job-descriptions">
-          <div class="job active">
-            <h3>Junior Web Developer (Mar 2021 - Sept 2021)</h3>
-            <ul>
-              <li>Communicated with clients about design and technical details.</li>
-              <li>Wrote code using HTML, CSS, and JavaScript.</li>
-              <li>Reviewed UI/UX designs for layout compatibility.</li>
-              <li>Monitored website traffic to improve usability.</li>
-              <li>Tested company website applications.</li>
-            </ul>
-          </div>
-          <div class="job">
-            <h3>HTML-Application Developer (Sept 2021 - June 2022)</h3>
-            <ul>
-              <li>Performed unit & integration testing.</li>
-              <li>Troubleshot and debugged applications.</li>
-              <li>Created prototypes based on client specifications.</li>
-              <li>Tracked application lifecycle to ensure timely updates.</li>
-            </ul>
-          </div>
-          <div class="job">
-            <h3>Web Administrator (Mar 2023 - Present)</h3>
-            <ul>
-              <li>Maintained and monitored tools on the web server.</li>
-              <li>Developed web-based e-commerce applications.</li>
-              <li>Implemented website revision procedures.</li>
-              <li>Suggested website improvements and new features.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h3>Skills Inventory</h3>
+        <ul class="skills">
+          <li>C#</li>
+          <li>ASP.NET Core</li>
+          <li>Entity Framework Core</li>
+          <li>Minimal APIs</li>
+          <li>SQL</li>
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>MongoDB</li>
+          <li>PostgreSQL</li>
+          <li>Git</li>
+          <li>Agile/Scrum</li>
+        </ul>
 
-    <!-- Projects Section -->
-    <section id="Projects" class="projects">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <!-- Example Project Card -->
-        <div class="project-card">
-          <img src="/assets/img/project1.png" alt="Project 1">
-          <div class="project-info">
-            <h3>Project 1</h3>
-            <p>A brief description of Project 1</p>
-            <div class="project-links">
-              <a href="#">View</a>
-              <a href="#">Code</a>
+        <h3>Experience Log</h3>
+        <p class="experience-intro">Recent roles focused on backend development, platform reliability, and delivery speed.</p>
+        <div class="experience-tabs">
+          <div class="companies" role="tablist" aria-label="Work experience">
+            <button class="exp-company active" type="button" aria-selected="true">Kareila Management Corp</button>
+            <button class="exp-company" type="button" aria-selected="false">University of Perpetual Help</button>
+            <button class="exp-company" type="button" aria-selected="false">E-Team Workforce</button>
+            <button class="exp-company" type="button" aria-selected="false">Konnectd</button>
+            <div class="experience-controls" aria-label="Experience controls">
+              <button id="exp-prev" class="exp-nav-btn" type="button" aria-label="Previous experience">
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                <span>Prev</span>
+              </button>
+              <div class="exp-position-wrap">
+                <span id="exp-position" class="exp-position">1 / 4</span>
+                <span class="exp-progress" aria-hidden="true">
+                  <span id="exp-progress-bar" class="exp-progress-bar"></span>
+                </span>
+              </div>
+              <button id="exp-next" class="exp-nav-btn" type="button" aria-label="Next experience">
+                <span>Next</span>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <div class="job-descriptions">
+            <div class="job active">
+              <h4>Software Developer</h4>
+              <p class="job-meta">Kareila Management Corporation | May 2025 - Mar 2026</p>
+              <p class="job-summary">Delivered business-critical backend modules across API, database, and testing workflows.</p>
+              <ul class="job-impact">
+                <li>Built and maintained REST APIs with C#, ASP.NET MVC/Core, and SQL.</li>
+                <li>Refactored core modules for feature delivery, stability, and maintainability.</li>
+                <li>Executed unit, integration, and UAT coverage for release quality.</li>
+                <li>Documented milestones, revisions, and updates for better team visibility.</li>
+              </ul>
+              <div class="job-tech">
+                <span>C#</span>
+                <span>ASP.NET Core</span>
+                <span>REST API</span>
+                <span>SQL</span>
+                <span>Testing</span>
+              </div>
+            </div>
+            <div class="job">
+              <h4>Web Administrator</h4>
+              <p class="job-meta">University of Perpetual Help System - Laguna | Mar 2023 - May 2025</p>
+              <p class="job-summary">Handled web platform operations and drove continuous improvements in performance and usability.</p>
+              <ul class="job-impact">
+                <li>Monitored server-side tools and website infrastructure for reliability and uptime.</li>
+                <li>Built and deployed web solutions supporting e-commerce and internal operations.</li>
+                <li>Introduced structured update and revision workflows for faster iteration.</li>
+                <li>Implemented improvements that increased site functionality and user experience.</li>
+              </ul>
+              <div class="job-tech">
+                <span>Web Admin</span>
+                <span>Deployment</span>
+                <span>Operations</span>
+                <span>Performance</span>
+              </div>
+            </div>
+            <div class="job">
+              <h4>HTML-Application Developer</h4>
+              <p class="job-meta">E-Team Workforce Private Corporation | Sept 2021 - June 2022</p>
+              <p class="job-summary">Delivered client-facing application updates with strong QA discipline and clear requirement mapping.</p>
+              <ul class="job-impact">
+                <li>Performed unit and integration testing to reduce release issues.</li>
+                <li>Troubleshot defects and stabilized features under active delivery timelines.</li>
+                <li>Built and validated prototypes from client requirements and specifications.</li>
+                <li>Maintained release cadence through consistent update and enhancement cycles.</li>
+              </ul>
+              <div class="job-tech">
+                <span>HTML</span>
+                <span>JavaScript</span>
+                <span>Testing</span>
+                <span>Debugging</span>
+              </div>
+            </div>
+            <div class="job">
+              <h4>Junior Web Developer</h4>
+              <p class="job-meta">Konnectd Corp. | Mar 2021 - Sept 2021</p>
+              <p class="job-summary">Collaborated closely with clients and converted UI/UX designs into responsive web implementations.</p>
+              <ul class="job-impact">
+                <li>Built responsive front-end pages using HTML, CSS, and JavaScript.</li>
+                <li>Aligned technical builds with design specifications and client requirements.</li>
+                <li>Monitored website behavior and improved usability through iterative updates.</li>
+                <li>Tested web applications for compatibility and functional quality.</li>
+              </ul>
+              <div class="job-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>UI Integration</span>
+              </div>
             </div>
           </div>
         </div>
+
+        <h3>Education & Certifications</h3>
+        <p>BS Information Technology, Lyceum of the Philippines University - Laguna (Graduated June 2020)</p>
+        <p>Certifications: Adobe Experience Manager (02/2022), SAP Business One (10/2017)</p>
+      </section>
+
+      <section id="Projects" class="panel" data-panel="projects">
+        <p class="line">$ ls ./quests</p>
+        <h2>Projects as Quests</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-badge">Main Quest</div>
+            <h3>Shipment API</h3>
+            <p>A modular ASP.NET Core Minimal API for shipment and user management with JWT, refresh tokens, pagination, FluentValidation, EF Core, and SignalR notifications.</p>
+            <div class="project-links">
+              <a href="https://github.com/CLeovison/Shipment" target="_blank" rel="noopener noreferrer">View</a>
+              <a href="https://github.com/CLeovison/Shipment" target="_blank" rel="noopener noreferrer">Code</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-badge">Side Quest</div>
+            <h3>Wait API</h3>
+            <p>A clean-architecture ASP.NET Core Minimal API with layered services and repositories, JWT auth, rate limiting middleware, and validation-focused endpoint design.</p>
+            <div class="project-links">
+              <a href="https://github.com/CLeovison/Wait" target="_blank" rel="noopener noreferrer">View</a>
+              <a href="https://github.com/CLeovison/Wait" target="_blank" rel="noopener noreferrer">Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="Contact" class="panel" data-panel="contact">
+        <p class="line">$ nano contact.msg</p>
+        <h2>Contact</h2>
+        <p>Open to backend engineering roles, API architecture initiatives, and high-impact full-stack collaborations.</p>
+        <p>Email: cleovison@gmail.com | Mobile: +63 935 504 2720 | Location: Binan, Laguna, Philippines</p>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+
+      <section class="command-zone" aria-label="Terminal command zone">
+        <label for="terminal-input" class="prompt">:</label>
+        <input id="terminal-input" type="text" autocomplete="off" placeholder="Type help for command guide" />
+      </section>
+
+      <div class="output" id="terminal-output" aria-live="polite">
+        <p>system: Boot complete. Welcome to // Leovison. Type <strong>help</strong> then press Enter.</p>
       </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="Contact" class="contact">
-      <h2>Contact Me</h2>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
   </main>
+
+  <nav class="mobile-nav-dock" aria-label="Mobile command dock">
+    <a href="#Home" class="mobile-nav-link active" data-target="Home" aria-label="Home">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
+      <span>Home</span>
+    </a>
+    <a href="#About" class="mobile-nav-link" data-target="About" aria-label="About">
+      <i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
+      <span>About</span>
+    </a>
+    <a href="#Projects" class="mobile-nav-link" data-target="Projects" aria-label="Projects">
+      <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+      <span>Projects</span>
+    </a>
+    <a href="#Contact" class="mobile-nav-link" data-target="Contact" aria-label="Contact">
+      <i class="fa-solid fa-satellite-dish" aria-hidden="true"></i>
+      <span>Contact</span>
+    </a>
+  </nav>
 
   <script src="/src/script/main.js"></script>
 </body>
