@@ -20,6 +20,7 @@ const expPrevButton = document.getElementById('exp-prev');
 const expNextButton = document.getElementById('exp-next');
 const expPosition = document.getElementById('exp-position');
 const expProgressBar = document.getElementById('exp-progress-bar');
+const OUTPUT_MAX_LINES = 11;
 
 let currentSectionIndex = 0;
 let currentTabIndex = 0;
@@ -40,7 +41,10 @@ function appendLog(message) {
   const line = document.createElement('p');
   line.innerHTML = message;
   output.appendChild(line);
-  output.scrollTop = output.scrollHeight;
+
+  while (output.childElementCount > OUTPUT_MAX_LINES) {
+    output.removeChild(output.firstElementChild);
+  }
 }
 
 function syncActiveNav(sectionName) {
@@ -358,10 +362,29 @@ const observer = new IntersectionObserver(
 
 sectionElements.forEach((section) => observer.observe(section));
 
-document.addEventListener('pointermove', (event) => {
-  document.documentElement.style.setProperty('--cursor-x', `${event.clientX}px`);
-  document.documentElement.style.setProperty('--cursor-y', `${event.clientY}px`);
-});
+const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+if (hasFinePointer) {
+  let cursorFrameRequested = false;
+  let pendingCursorX = 0;
+  let pendingCursorY = 0;
+
+  document.addEventListener('pointermove', (event) => {
+    pendingCursorX = event.clientX;
+    pendingCursorY = event.clientY;
+
+    if (cursorFrameRequested) {
+      return;
+    }
+
+    cursorFrameRequested = true;
+    window.requestAnimationFrame(() => {
+      document.documentElement.style.setProperty('--cursor-x', `${pendingCursorX}px`);
+      document.documentElement.style.setProperty('--cursor-y', `${pendingCursorY}px`);
+      cursorFrameRequested = false;
+    });
+  });
+}
 
 const savedTheme = localStorage.getItem('portfolioTheme');
 setTheme(savedTheme === 'light' ? 'light' : 'dark');
