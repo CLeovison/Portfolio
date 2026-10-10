@@ -16,6 +16,8 @@
   --radius-lg: 24px;
   --radius-pill: 999px;
   --transition: 200ms ease;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
 }
 
 * {
@@ -93,6 +95,81 @@ body.light-theme {
   --danger: #9e3f5c;
 }
 
+.game-atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.aurora {
+  position: absolute;
+  width: 52rem;
+  height: 52rem;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: 0.22;
+}
+
+.aurora-a {
+  left: -12rem;
+  top: -16rem;
+  background: radial-gradient(circle at 45% 50%, rgba(67, 136, 255, 0.52), transparent 68%);
+  animation: aurora-shift-a 17s ease-in-out infinite;
+}
+
+.aurora-b {
+  right: -14rem;
+  bottom: -20rem;
+  background: radial-gradient(circle at 52% 48%, rgba(84, 226, 255, 0.4), transparent 70%);
+  animation: aurora-shift-b 20s ease-in-out infinite;
+}
+
+.grid-sweep {
+  position: absolute;
+  inset: -18% -8%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(124, 164, 255, 0.04) 0 1px,
+      transparent 1px 88px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(124, 164, 255, 0.025) 0 1px,
+      transparent 1px 88px
+    );
+  transform: perspective(520px) rotateX(62deg);
+  transform-origin: center bottom;
+  opacity: 0.42;
+  animation: sweep-drift 13s linear infinite;
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 28%),
+    repeating-radial-gradient(circle at 0 0, rgba(168, 197, 255, 0.09) 0 1px, transparent 1px 3px);
+  background-size: 100% 100%, 3px 3px;
+  animation: noise-jitter 6s steps(2, end) infinite;
+}
+
+.cursor-glow {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  left: calc(var(--cursor-x) - 13rem);
+  top: calc(var(--cursor-y) - 13rem);
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(120, 206, 255, 0.2), transparent 66%);
+  opacity: 0.4;
+  transition: left 160ms linear, top 160ms linear;
+}
+
 .bg-grid {
   position: fixed;
   top: 0;
@@ -108,8 +185,15 @@ body.light-theme {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent 28%);
   background-size: 100% 100%, 100% 100%, 124px 124px, 124px 124px, 100% 100%;
   background-position: center, center, center, center;
-  z-index: -1;
+  z-index: 1;
   animation: ambient-drift 22s ease-in-out infinite;
+}
+
+.status-bar,
+.shell,
+.mobile-nav-dock {
+  position: relative;
+  z-index: 5;
 }
 
 .bg-grid::before,
@@ -336,6 +420,21 @@ kbd {
       rgba(0, 255, 255, 0.03)
     );
   animation: chroma-drift 4s ease-in-out infinite;
+}
+
+.terminal-window.is-warping::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 0%, rgba(99, 216, 255, 0.18) 48%, transparent 100%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03) 0 1px,
+      transparent 1px 4px
+    );
+  animation: warp-flash 240ms ease;
 }
 
 .terminal-top {
@@ -972,6 +1071,57 @@ kbd {
   100% { opacity: 0.09; }
 }
 
+@keyframes aurora-shift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 4%, 0) scale(1.08);
+  }
+}
+
+@keyframes aurora-shift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2%, -4%, 0) scale(1.06);
+  }
+}
+
+@keyframes sweep-drift {
+  from {
+    transform: perspective(520px) rotateX(62deg) translateY(0);
+  }
+  to {
+    transform: perspective(520px) rotateX(62deg) translateY(36px);
+  }
+}
+
+@keyframes noise-jitter {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-0.6px, 0.6px);
+  }
+}
+
+@keyframes warp-flash {
+  from {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes chroma-drift {
   0%, 100% {
     transform: translateX(0);
@@ -1053,6 +1203,14 @@ kbd {
 }
 
 @media (max-width: 760px) {
+  .game-atmosphere {
+    opacity: 0.85;
+  }
+
+  .cursor-glow {
+    display: none;
+  }
+
   body {
     padding-bottom: calc(88px + env(safe-area-inset-bottom));
   }
@@ -1227,12 +1385,20 @@ kbd {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .game-atmosphere {
+    display: none;
+  }
+
   body::before,
   body::after,
   .bg-grid,
   .bg-grid::before,
   .bg-grid::after,
+  .aurora,
+  .grid-sweep,
+  .noise-overlay,
   .terminal-window::after,
+  .terminal-window.is-warping::before,
   .glitch-text,
   .glitch-text::before,
   .glitch-text::after,

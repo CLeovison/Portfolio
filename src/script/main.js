@@ -57,8 +57,23 @@ function syncActiveNav(sectionName) {
   });
 }
 
+function triggerWarpEffect() {
+  if (!terminalWindow) {
+    return;
+  }
+
+  terminalWindow.classList.remove('is-warping');
+  window.requestAnimationFrame(() => {
+    terminalWindow.classList.add('is-warping');
+    window.setTimeout(() => {
+      terminalWindow.classList.remove('is-warping');
+    }, 280);
+  });
+}
+
 function activateSectionByIndex(index, shouldScroll = true) {
   const safeIndex = Math.max(0, Math.min(index, appSections.length - 1));
+  const previousIndex = currentSectionIndex;
   currentSectionIndex = safeIndex;
   currentTabIndex = safeIndex;
 
@@ -66,6 +81,10 @@ function activateSectionByIndex(index, shouldScroll = true) {
   sectionElements[safeIndex].classList.add('active-panel');
 
   syncActiveNav(appSections[safeIndex]);
+
+  if (safeIndex !== previousIndex) {
+    triggerWarpEffect();
+  }
 
   if (shouldScroll && terminalWindow) {
     const headerOffset = statusBar ? statusBar.offsetHeight + 12 : 88;
@@ -338,6 +357,11 @@ const observer = new IntersectionObserver(
 );
 
 sectionElements.forEach((section) => observer.observe(section));
+
+document.addEventListener('pointermove', (event) => {
+  document.documentElement.style.setProperty('--cursor-x', `${event.clientX}px`);
+  document.documentElement.style.setProperty('--cursor-y', `${event.clientY}px`);
+});
 
 const savedTheme = localStorage.getItem('portfolioTheme');
 setTheme(savedTheme === 'light' ? 'light' : 'dark');
